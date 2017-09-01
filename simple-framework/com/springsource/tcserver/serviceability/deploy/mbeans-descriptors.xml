@@ -1,0 +1,249 @@
+<!-- Copyright (c) 2010 VMware, Inc.  All rights reserved. -->
+
+<mbeans-descriptors>
+
+  <mbean          name="TcContainerDeployer"
+           description="Provides container wide application deployment logic"
+                domain="tcServer"
+                 group="Serviceability"
+                  type="com.springsource.tcserver.serviceability.deploy.TcContainerDeployer">
+
+    <attribute    name="className"
+           description="Fully qualified class name of the managed object"
+                  type="java.lang.String"
+             writeable="false"/>
+
+    <operation    name="getServices"
+           description="Lists all service containers"
+                impact="ACTION"
+            returnType="[Ljava.lang.String;">
+    </operation>
+    
+    <operation    name="getHosts"
+           description="Lists all host containers for a specific service container"
+                impact="ACTION"
+            returnType="[Ljava.lang.String;">
+      <parameter name="service"
+          description="Name of the service container to list hosts for"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation    name="listApplications"
+           description="Lists all deployed applications for a specific host"
+                impact="ACTION"
+            returnType="java.util.Set">
+      <parameter name="service"
+          description="Name of the service container that the host belongs to"
+                 type="java.lang.String"/>
+      <parameter name="host"
+          description="Name of the host container to list applications for"
+                 type="java.lang.String"/>
+    </operation>
+    
+    <operation    name="deployApplication"
+           description="Deploys an application for a specific host as a local WAR file"
+                impact="ACTION"
+            returnType="VOID">
+      <parameter name="service"
+          description="Name of the service container that the host belongs to"
+                 type="java.lang.String"/>
+      <parameter name="host"
+          description="Name of the host container to deploy into"
+                 type="java.lang.String"/>
+      <parameter name="path"
+          description="Context path the application will be deployed at"
+                 type="java.lang.String"/>
+      <parameter name="warfile"
+          description="File name path to a local WAR file"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation    name="deployApplication"
+           description="Deploys an application for a specific host as a local WAR file"
+                impact="ACTION"
+            returnType="VOID">
+      <parameter name="service"
+          description="Name of the service container that the host belongs to"
+                 type="java.lang.String"/>
+      <parameter name="host"
+          description="Name of the host container to deploy into"
+                 type="java.lang.String"/>
+      <parameter name="path"
+          description="Context path with which the application will be deployed"
+                 type="java.lang.String"/>
+      <parameter name="version"
+          description="Context version with which the application will deployed"
+                 type="java.lang.String"/>
+      <parameter name="warfile"
+          description="File name path to a local WAR file"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation    name="undeployApplication"
+           description="Undeploys an application for a specific host"
+                impact="ACTION"
+            returnType="VOID">
+      <parameter name="service"
+          description="Name of the service container that the host belongs to"
+                 type="java.lang.String"/>
+      <parameter name="host"
+          description="Name of the host container where the application is deployed"
+                 type="java.lang.String"/>
+      <parameter name="path"
+          description="Context path with which the application is deployed"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation    name="undeployApplication"
+           description="Undeploys an application for a specific host"
+                impact="ACTION"
+            returnType="VOID">
+      <parameter name="service"
+          description="Name of the service container that the host belongs to"
+                 type="java.lang.String"/>
+      <parameter name="host"
+          description="Name of the host container where the application is deployed"
+                 type="java.lang.String"/>
+      <parameter name="path"
+          description="Context path with which the application is deployed"
+                 type="java.lang.String"/>
+      <parameter name="version"
+          description="Context version with which the application is deployed"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation    name="stopApplication"
+           description="Stops an application for a specific host"
+                impact="ACTION"
+            returnType="VOID">
+      <parameter name="service"
+          description="Name of the service container that the host belongs to"
+                 type="java.lang.String"/>
+      <parameter name="host"
+          description="Name of the host container where the application is deployed"
+                 type="java.lang.String"/>
+      <parameter name="path"
+          description="Context path with which the application is deployed"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation    name="stopApplication"
+           description="Stops an application for a specific host"
+                impact="ACTION"
+            returnType="VOID">
+      <parameter name="service"
+          description="Name of the service container that the host belongs to"
+                 type="java.lang.String"/>
+      <parameter name="host"
+          description="Name of the host container where the application is deployed"
+                 type="java.lang.String"/>
+      <parameter name="path"
+          description="Context path with which the application is deployed"
+                 type="java.lang.String"/>
+      <parameter name="version"
+          description="Context version with which the application is deployed"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation    name="startApplication"
+           description="Starts an application for a specific host"
+                impact="ACTION"
+            returnType="VOID">
+      <parameter name="service"
+          description="Name of the service container that the host belongs to"
+                 type="java.lang.String"/>
+      <parameter name="host"
+          description="Name of the host container where the application is deployed"
+                 type="java.lang.String"/>
+      <parameter name="path"
+          description="Context path with which the application is deployed"
+                 type="java.lang.String"/>
+    </operation>
+    
+    <operation    name="startApplication"
+           description="Starts an application for a specific host"
+                impact="ACTION"
+            returnType="VOID">
+      <parameter name="service"
+          description="Name of the service container that the host belongs to"
+                 type="java.lang.String"/>
+      <parameter name="host"
+          description="Name of the host container where the application is deployed"
+                 type="java.lang.String"/>
+      <parameter name="path"
+          description="Context path with which the application is deployed"
+                 type="java.lang.String"/>
+      <parameter name="version"
+          description="Context version with which the application is deployed"
+                 type="java.lang.String"/>
+    </operation>
+    
+    <operation    name="reloadApplication"
+           description="Reloads an application for a specific host"
+                impact="ACTION"
+            returnType="VOID">
+      <parameter name="service"
+          description="Name of the service container that the host belongs to"
+                 type="java.lang.String"/>
+      <parameter name="host"
+          description="Name of the host container where the application is deployed"
+                 type="java.lang.String"/>
+      <parameter name="path"
+          description="Context path with which the application is deployed"
+                 type="java.lang.String"/>
+    </operation>
+    
+    <operation    name="reloadApplication"
+           description="Reloads an application for a specific host"
+                impact="ACTION"
+            returnType="VOID">
+      <parameter name="service"
+          description="Name of the service container that the host belongs to"
+                 type="java.lang.String"/>
+      <parameter name="host"
+          description="Name of the host container where the application is deployed"
+                 type="java.lang.String"/>
+      <parameter name="path"
+          description="Context path with which the application is deployed"
+                 type="java.lang.String"/>
+      <parameter name="version"
+          description="Context version with which the application is deployed"
+                 type="java.lang.String"/>
+    </operation>
+    
+    <operation    name="getApplicationState"
+           description="Returns the state of an application for a specific host"
+                impact="ACTION"
+            returnType="java.lang.String">
+      <parameter name="service"
+          description="Name of the service container that the host belongs to"
+                 type="java.lang.String"/>
+      <parameter name="host"
+          description="Name of the host container where the application is deployed"
+                 type="java.lang.String"/>
+      <parameter name="path"
+          description="Context path with which the application is deployed"
+                 type="java.lang.String"/>
+    </operation>
+    
+    <operation    name="getApplicationState"
+           description="Returns the state of an application for a specific host"
+                impact="ACTION"
+            returnType="java.lang.String">
+      <parameter name="service"
+          description="Name of the service container that the host belongs to"
+                 type="java.lang.String"/>
+      <parameter name="host"
+          description="Name of the host container where the application is deployed"
+                 type="java.lang.String"/>
+      <parameter name="path"
+          description="Context path with which the application is deployed"
+                 type="java.lang.String"/>
+      <parameter name="version"
+          description="Context version with which the application is deployed"
+                 type="java.lang.String"/>
+    </operation>
+
+  </mbean>
+
+</mbeans-descriptors>

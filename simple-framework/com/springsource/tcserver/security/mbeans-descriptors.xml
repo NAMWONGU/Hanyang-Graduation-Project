@@ -1,0 +1,57 @@
+<!-- Copyright (c) 2010 VMware, Inc.  All rights reserved. -->
+
+<mbeans-descriptors>
+
+  <mbean          name="StatusReportValve"
+           description="Allows configuration of static pages or messages for different error codes."
+                domain="tcServer"
+                 group="Security"
+                  type="com.springsource.tcserver.security.StatusReportValve">
+
+    <attribute    name="className"
+           description="Fully qualified class name of the managed object"
+                  type="java.lang.String"
+             writeable="false"/>
+    <attribute    name="fileEncoding"
+           description="If set to non null value, this encoding will be used to read data from the file system"
+                  type="java.lang.String"
+             writeable="true"/>
+    <attribute    name="contentType"
+           description="HTTP response type for all status reports. Default is text/html"
+                  type="java.lang.String"
+             writeable="true"/>
+    <attribute    name="characterEncoding"
+           description="HTTP response character encoding. Default is utf-8"
+                  type="java.lang.String"
+             writeable="true"/>
+    <attribute    name="zeroLengthContent"
+           description="If set to true, the valve attempts to clear the body for the response and send back a zero length response body"
+                  type="boolean"
+             writeable="true"/>
+    <attribute    name="commitOnReport"
+           description="If set to true, the valve will commit the response after processing it"
+                  type="boolean"
+             writeable="true"/>
+    <attribute    name="cacheFiles"
+           description="If set to true, the valve will cache file contents as a String. If set to false it will also clear the cache"
+                  type="boolean"
+             writeable="true"/>
+    <attribute    name="removeException"
+           description="If set to true the request attribute Globals.EXCEPTION_ATTR will be removed after processing"
+                  type="boolean"
+             writeable="true"/>
+
+    <operation    name="setStatus"
+           description="Override a status flag during runtime"
+                impact="ACTION"
+            returnType="boolean">
+       <parameter    name="status"
+               description="The HTTP status code to override"
+                      type="int"/>     
+       <parameter    name="value"
+               description="A file path, a file URI or a message to set for this status code"
+                      type="java.lang.String"/>     
+    </operation>
+  </mbean>
+
+</mbeans-descriptors>
