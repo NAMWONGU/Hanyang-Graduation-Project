@@ -1,0 +1,18 @@
+package sample;
+
+import annotation.Component;
+
+@Component
+public class TestAutoWired {
+	
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+}
